@@ -2,7 +2,7 @@ import './App.css';
 import '../src/asset/style/index.css'
 import '../src/asset/style/style.css'
 const api = {
-  key: "afdcf7e46cf2fd47e04d9173f488a5c1",
+  key : process.env.REACT_APP_WEATHER_API , 
   baseUrl: "https://api.openweathermap.org/data/2.5/"
 }
 
