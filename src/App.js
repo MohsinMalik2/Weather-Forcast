@@ -1,13 +1,10 @@
 
 import React, { useState } from 'react';
-import './App.css';
+
 import '../src/asset/style/index.css'
 import '../src/asset/style/style.css'
 
-const api = {
-  key : process.env.REACT_APP_WEATHER_API , 
-  baseUrl: "https://api.openweathermap.org/data/2.5/"
-}
+const api_key =process.env.REACT_APP_WEATHER_API;
 
 
 
@@ -20,7 +17,7 @@ function App() {
 
   const search = evt => {
     if (evt.key === "Enter") {
-      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&APPID=${api_key}`)
         .then(res => res.json())
         .then(result => {
           setWeather(result);
@@ -39,7 +36,7 @@ function App() {
   }
   return (
     <div className="App">
-      <main className={(typeof weather.main != "undefined") ? ((weather.main.temp > 16) ? 'sec' : '') : ''}>
+      <main className={(typeof weather.main != "undefined") ? ((Math.round(weather.main.temp) < 16) ? 'sec' : '') : ''}>
           <h1> Weather Forecast </h1>
 
           <div className="body">
